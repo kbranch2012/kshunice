@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KShunice Custom Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1a1208;
+    --cream: #f5f0e8;
+    --gold: #c8983a;
+    --gold-light: #e8c87a;
+    --blush: #e8d5c0;
+    --terracotta: #b85c38;
+    --sage: #7a8c72;
+    --warm-white: #faf7f2;
+    --shadow: rgba(26,18,8,0.15);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-accent: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4vw;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,152,58,0.18);
+    transition: all .3s ease;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--gold); font-style: italic; }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: .85rem; font-weight: 500; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink);
+    text-decoration: none; transition: color .2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width .3s ease;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--ink); color: var(--cream) !important;
+    padding: .55rem 1.4rem; border-radius: 2px;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+  .nav-cta::after { display: none !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; border: none; background: none; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--ink); transition: all .3s; display: block; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; background: var(--warm-white); padding: 2rem;
+      gap: 1.5rem; border-bottom: 1px solid var(--blush); }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+    padding-top: 70px;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6vw 4vw 6vw 8vw;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 1rem; font-style: italic;
+    color: var(--terracotta);
+    letter-spacing: .1em;
+    margin-bottom: 1.2rem;
+    opacity: 0; animation: fadeUp .8s .2s forwards;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp .8s .35s forwards;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; display: block; }
+
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.75;
+    color: #5a4a38; max-width: 420px;
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp .8s .5s forwards;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp .8s .65s forwards;
+  }
+
+  .btn-primary {
+    background: var(--ink); color: var(--cream);
+    padding: .85rem 2rem; font-size: .9rem;
+    font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; border: none;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+    transition: background .25s, transform .2s;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::before {
+    content: ''; position: absolute;
+    inset: 0; background: var(--gold);
+    transform: translateX(-100%); transition: transform .3s ease;
+    z-index: 0;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary:hover { color: var(--ink); }
+
+  .btn-secondary {
+    background: transparent; color: var(--ink);
+    padding: .85rem 2rem; font-size: .9rem;
+    font-weight: 500; letter-spacing: .04em;
+    text-transform: uppercase; border: 1.5px solid var(--ink);
+    cursor: pointer; text-decoration: none;
+    display: inline-block; border-radius: 2px;
+    transition: all .25s;
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    opacity: 0; animation: fadeUp .8s .8s forwards;
+  }
+  .stat-item { text-align: left; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 700;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-label { font-size: .75rem; text-transform: uppercase;
+    letter-spacing: .1em; color: #8a7a68; margin-top: .2rem; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    opacity: 0; animation: fadeIn 1.2s .3s forwards;
+  }
+
+  .hero-mosaic {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .mosaic-tile {
+    overflow: hidden;
+    position: relative;
+  }
+  .mosaic-tile::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,152,58,.1), transparent);
+    pointer-events: none;
+  }
+  .mosaic-tile:first-child { grid-row: span 2; }
+
+  .mosaic-tile .tile-bg {
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform .6s ease;
+    transform: scale(1.05);
+  }
+  .mosaic-tile:hover .tile-bg { transform: scale(1.12); }
+
+  /* Placeholder gradients for tiles */
+  .tile-1 { background: linear-gradient(145deg, #2a1f0e 0%, #5a3e28 30%, #c8983a 60%, #8b5e3c 100%); }
+  .tile-2 { background: linear-gradient(145deg, #b85c38 0%, #e8c87a 50%, #f5f0e8 100%); }
+  .tile-3 { background: linear-gradient(145deg, #7a8c72 0%, #c8d5c0 50%, #e8f0e0 100%); }
+  .tile-4 { background: linear-gradient(145deg, #1a1208 0%, #4a3828 50%, #c8983a 100%); }
+
+  .tile-label {
+    position: absolute; bottom: 1rem; left: 1rem;
+    background: rgba(26,18,8,.7); color: var(--cream);
+    font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: .3rem .7rem; border-radius: 1px;
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-shape {
+    position: absolute; top: 30%; right: -80px;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(200,152,58,.25);
+    border-radius: 50%;
+    animation: rotateSlow 20s linear infinite;
+  }
+  .hero-shape::before {
+    content: ''; position: absolute;
+    inset: 20px; border: 1px solid rgba(200,152,58,.15);
+    border-radius: 50%;
+  }
+
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 55vw; }
+    .hero-left { padding: 3rem 2rem; }
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-strip {
+    background: var(--ink); overflow: hidden;
+    padding: .85rem 0; white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex; gap: 0;
+    animation: marqueeScroll 22s linear infinite;
+  }
+  .marquee-inner span {
+    font-family: var(--font-accent);
+    font-style: italic; font-size: 1.1rem;
+    color: var(--gold); padding: 0 2.5rem;
+    letter-spacing: .05em;
+  }
+  .marquee-inner .dot {
+    color: var(--terracotta); font-style: normal; padding: 0;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 6rem 8vw; }
+
+  .section-label {
+    font-family: var(--font-accent);
+    font-style: italic; font-size: 1rem;
+    color: var(--terracotta); letter-spacing: .1em;
+    margin-bottom: .6rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 900; line-height: 1.1;
+    letter-spacing: -.02em; color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem; font-weight: 300;
+    color: #6a5a48; line-height: 1.7;
+    max-width: 520px; margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5vw; align-items: center;
+  }
+
+  .about-visual {
+    position: relative; aspect-ratio: 4/5; border-radius: 2px; overflow: hidden;
+  }
+  .about-visual .main-img {
+    width: 100%; height: 100%;
+    background: linear-gradient(160deg, #3a2810, #c8983a 50%, #8b5e3c);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-visual-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    width: 110px; height: 110px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; text-align: center;
+    padding: .5rem;
+    box-shadow: 0 8px 30px rgba(200,152,58,.4);
+  }
+  .about-visual-badge .badge-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem; font-weight: 900; color: var(--ink); line-height: 1;
+  }
+  .about-visual-badge .badge-text {
+    font-size: .6rem; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--ink); line-height: 1.2;
+  }
+
+  .about-content { padding-left: 2vw; }
+  .about-list { list-style: none; margin: 1.5rem 0 2.5rem; }
+  .about-list li {
+    display: flex; gap: .8rem; align-items: flex-start;
+    margin-bottom: .9rem; font-size: .95rem; line-height: 1.6;
+  }
+  .about-list li::before {
+    content: '◆'; color: var(--gold);
+    font-size: .5rem; margin-top: .45rem; flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    #about { grid-template-columns: 1fr; }
+    .about-content { padding-left: 0; }
+    .about-visual { aspect-ratio: 3/2; }
+  }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--warm-white); }
+
+  .portfolio-filters {
+    display: flex; gap: .6rem; flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .filter-btn {
+    padding: .45rem 1.2rem; border: 1.5px solid var(--blush);
+    background: transparent; color: var(--ink);
+    font-family: var(--font-body); font-size: .8rem;
+    font-weight: 500; letter-spacing: .06em;
+    text-transform: uppercase; cursor: pointer;
+    border-radius: 2px; transition: all .2s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--ink); color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .portfolio-card {
+    position: relative; overflow: hidden;
+    border-radius: 2px; cursor: pointer;
+    aspect-ratio: 4/5;
+    background: var(--blush);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px var(--shadow); }
+
+  .card-img {
+    width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    transition: transform .5s ease;
+  }
+  .portfolio-card:hover .card-img { transform: scale(1.06); }
+
+  /* Portfolio card placeholder colors */
+  .card-c1 { background: linear-gradient(145deg, #2a1f0e, #c8983a 60%, #8b5e3c); }
+  .card-c2 { background: linear-gradient(145deg, #b85c38, #f5d5a5 70%, #e8c87a); }
+  .card-c3 { background: linear-gradient(145deg, #7a8c72, #c8d5c0 60%, #f0f5ec); }
+  .card-c4 { background: linear-gradient(145deg, #1a1208, #5a3e28 50%, #c8983a); }
+  .card-c5 { background: linear-gradient(145deg, #4a3020, #c8983a 40%, #f5f0e8); }
+  .card-c6 { background: linear-gradient(145deg, #8b2e1a, #e8c87a 60%, #f5d5a5); }
+
+  .card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,18,8,.9) 0%, rgba(26,18,8,.2) 50%, transparent 100%);
+    opacity: 0; transition: opacity .3s ease;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1.5rem;
+  }
+  .portfolio-card:hover .card-overlay { opacity: 1; }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--cream); margin-bottom: .3rem;
+  }
+  .card-category {
+    font-size: .75rem; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .card-quick-view {
+    background: var(--gold); color: var(--ink);
+    border: none; padding: .55rem 1.2rem;
+    font-size: .8rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px;
+    align-self: flex-start;
+    transition: background .2s, transform .2s;
+  }
+  .card-quick-view:hover { background: var(--gold-light); transform: scale(1.03); }
+
+  /* Modal */
+  .modal-backdrop {
+    display: none; position: fixed; inset: 0;
+    background: rgba(26,18,8,.85); z-index: 200;
+    align-items: center; justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(6px);
+  }
+  .modal-backdrop.open { display: flex; }
+
+  .modal-box {
+    background: var(--warm-white);
+    max-width: 720px; width: 100%;
+    border-radius: 2px; overflow: hidden;
+    position: relative;
+    animation: modalIn .35s ease;
+    max-height: 90vh;
+    display: flex; flex-direction: column;
+  }
+  .modal-media {
+    height: 320px; flex-shrink: 0;
+    background-size: cover; background-position: center;
+  }
+  .modal-body {
+    padding: 2rem 2.5rem;
+    overflow-y: auto;
+  }
+  .modal-body h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem; font-weight: 900;
+    margin-bottom: .4rem;
+  }
+  .modal-body p { font-size: .95rem; line-height: 1.7; color: #5a4a38; margin-bottom: 1.2rem; }
+  .modal-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .modal-tag {
+    background: var(--blush); color: var(--terracotta);
+    font-size: .75rem; padding: .25rem .8rem;
+    border-radius: 2px; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--ink); color: var(--cream);
+    border: none; width: 36px; height: 36px;
+    border-radius: 50%; font-size: 1.1rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .modal-close:hover { background: var(--terracotta); }
+
+  /* ── ORDER FORM ── */
+  #order {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  #order::before {
+    content: '';
+    position: absolute; top: -30%; right: -10%;
+    width: 60vw; height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,152,58,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #order .section-title { color: var(--cream); }
+  #order .section-sub { color: rgba(245,240,232,.65); }
+  #order .section-label { color: var(--gold); }
+
+  .order-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 6vw; align-items: start;
+    position: relative; z-index: 1;
+  }
+
+  .order-info-card {
+    background: rgba(245,240,232,.06);
+    border: 1px solid rgba(200,152,58,.2);
+    border-radius: 2px; padding: 2rem;
+    margin-top: 2rem;
+  }
+  .order-step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1.8rem;
+  }
+  .order-step:last-child { margin-bottom: 0; }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 900;
+    color: var(--gold); line-height: 1; flex-shrink: 0;
+    opacity: .5;
+  }
+  .step-text h4 {
+    font-size: .9rem; font-weight: 600;
+    letter-spacing: .04em; margin-bottom: .3rem;
+    color: var(--cream);
+  }
+  .step-text p { font-size: .85rem; color: rgba(245,240,232,.6); line-height: 1.6; }
+
+  /* Form */
+  .order-form { background: var(--warm-white); padding: 2.5rem; border-radius: 2px; }
+
+  .form-group { margin-bottom: 1.4rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  label {
+    display: block; font-size: .78rem;
+    font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink);
+    margin-bottom: .5rem;
+  }
+  label span { color: var(--terracotta); }
+
+  input, select, textarea {
+    width: 100%; padding: .8rem 1rem;
+    border: 1.5px solid var(--blush);
+    background: white; color: var(--ink);
+    font-family: var(--font-body); font-size: .95rem;
+    border-radius: 2px; transition: border-color .2s, box-shadow .2s;
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200,152,58,.12);
+  }
+  input::placeholder, textarea::placeholder { color: #b0a090; }
+
+  select { appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231a1208' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  textarea { resize: vertical; min-height: 100px; }
+
+  .file-upload-area {
+    border: 2px dashed var(--blush);
+    padding: 1.5rem; text-align: center;
+    cursor: pointer; border-radius: 2px;
+    transition: all .2s; position: relative;
+  }
+  .file-upload-area:hover, .file-upload-area.dragover {
+    border-color: var(--gold);
+    background: rgba(200,152,58,.04);
+  }
+  .file-upload-area input[type="file"] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%;
+  }
+  .file-upload-icon { font-size: 2rem; margin-bottom: .5rem; opacity: .5; }
+  .file-upload-text { font-size: .85rem; color: #8a7a68; }
+  .file-upload-text strong { color: var(--gold); }
+  #file-name { font-size: .8rem; color: var(--sage); margin-top: .5rem; }
+
+  .color-swatches { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
+  .swatch-input { display: none; }
+  .swatch-label {
+    width: 32px; height: 32px; border-radius: 50%;
+    cursor: pointer; transition: transform .2s, box-shadow .2s;
+    border: 2px solid transparent;
+    position: relative;
+  }
+  .swatch-label:hover { transform: scale(1.15); }
+  .swatch-input:checked + .swatch-label {
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(26,18,8,.2);
+    transform: scale(1.1);
+  }
+  .swatch-label::after {
+    content: ''; position: absolute; inset: 0;
+    border-radius: 50%; background: inherit;
+  }
+
+  .form-submit {
+    width: 100%; padding: 1rem;
+    background: var(--ink); color: var(--cream);
+    border: none; font-family: var(--font-body);
+    font-size: .95rem; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px;
+    transition: background .25s, transform .2s;
+    margin-top: .5rem;
+  }
+  .form-submit:hover { background: var(--gold); color: var(--ink); }
+  .form-submit:active { transform: scale(.98); }
+
+  /* Success state */
+  .success-state {
+    display: none; text-align: center;
+    padding: 3rem 2rem;
+  }
+  .success-state.show { display: block; }
+  .success-icon {
+    width: 70px; height: 70px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--terracotta));
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.8rem;
+    animation: successPop .5s ease;
+  }
+  .success-state h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--ink); margin-bottom: .8rem;
+  }
+  .success-state p { font-size: .95rem; color: #6a5a48; line-height: 1.7; margin-bottom: 2rem; }
+  .success-ref {
+    display: inline-block;
+    background: var(--blush); padding: .5rem 1.5rem;
+    border-radius: 2px; font-family: var(--font-accent);
+    font-size: 1.2rem; color: var(--terracotta);
+    letter-spacing: .1em; margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .order-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--cream);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5vw; align-items: start;
+  }
+
+  .contact-methods { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .contact-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem; background: var(--warm-white);
+    border-radius: 2px; border-left: 3px solid var(--gold);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .contact-item:hover { transform: translateX(4px); box-shadow: 4px 4px 20px var(--shadow); }
+
+  .contact-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--ink); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; color: var(--gold);
+  }
+  .contact-item h4 { font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .1em; color: #8a7a68; margin-bottom: .2rem; }
+  .contact-item a, .contact-item p { color: var(--ink); text-decoration: none;
+    font-weight: 500; font-size: .95rem; }
+  .contact-item a:hover { color: var(--gold); }
+
+  .social-links { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: .5rem; }
+  .social-btn {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .5rem 1rem;
+    border: 1.5px solid var(--blush);
+    background: transparent; color: var(--ink);
+    text-decoration: none; font-size: .85rem;
+    font-weight: 500; border-radius: 2px;
+    transition: all .2s; cursor: pointer;
+  }
+  .social-btn:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  .service-map {
+    background: var(--ink); border-radius: 2px;
+    padding: 2rem; color: var(--cream);
+    min-height: 280px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .service-map::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 50%, rgba(200,152,58,.12) 0%, transparent 50%),
+      radial-gradient(circle at 70% 80%, rgba(184,92,56,.1) 0%, transparent 40%);
+  }
+  .map-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--gold); z-index: 1; position: relative;
+  }
+  .map-dot-grid {
+    display: grid; grid-template-columns: repeat(8, 1fr);
+    gap: 8px; z-index: 1; position: relative; margin: 1.5rem 0;
+  }
+  .map-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(200,152,58,.2);
+    transition: background .3s;
+  }
+  .map-dot.active { background: var(--gold); animation: pulse 2s infinite; }
+  .map-dot.semi { background: rgba(200,152,58,.5); }
+
+  .service-areas { z-index: 1; position: relative; }
+  .service-areas h4 { font-size: .75rem; text-transform: uppercase;
+    letter-spacing: .1em; color: rgba(245,240,232,.5); margin-bottom: .7rem; }
+  .area-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .area-tag {
+    background: rgba(245,240,232,.08); color: var(--cream);
+    padding: .3rem .8rem; border-radius: 2px;
+    font-size: .8rem; border: 1px solid rgba(245,240,232,.12);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: var(--cream);
+    padding: 3rem 8vw 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 900;
+    color: var(--cream); margin-bottom: .5rem;
+  }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+  .footer-tagline {
+    font-family: var(--font-accent); font-style: italic;
+    color: rgba(245,240,232,.5); font-size: 1rem; margin-bottom: 2rem;
+  }
+  .footer-divider { border: none; border-top: 1px solid rgba(245,240,232,.1); margin: 1.5rem 0; }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .8rem; color: rgba(245,240,232,.4); flex-wrap: wrap; gap: .5rem;
+  }
+
+  /* ── ADMIN NOTE BANNER ── */
+  .admin-note {
+    background: linear-gradient(135deg, #1a3a1a, #2a5a2a);
+    color: #a8d8a8; padding: 1rem 8vw;
+    font-size: .85rem; display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .admin-note-icon { flex-shrink: 0; font-size: 1.1rem; }
+  .admin-note strong { color: #c8f0c8; display: block; margin-bottom: .2rem; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(200,152,58,.4); }
+    50% { opacity: .7; box-shadow: 0 0 0 6px rgba(200,152,58,0); }
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(.95) translateY(16px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes successPop {
+    0% { transform: scale(0); } 70% { transform: scale(1.15); } 100% { transform: scale(1); }
+  }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  /* Accessibility */
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="#hero" class="nav-logo" aria-label="KShunice Custom Designs Home">K<span>Shunice</span></a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#order" class="nav-cta">Start a Design</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero" aria-label="Hero introduction">
+  <div class="hero-left">
+    <p class="hero-eyebrow">✦ Handcrafted with intention</p>
+    <h1 class="hero-title">
+      Custom Designs<br>
+      <em>Made for You</em>
+    </h1>
+    <p class="hero-sub">
+      One-of-a-kind pieces crafted to your vision — from personalized apparel and gifts to bespoke accessories that carry your story.
+    </p>
+    <div class="hero-actions">
+      <a href="#order" class="btn-primary"><span>Start Your Order</span></a>
+      <a href="#portfolio" class="btn-secondary">View Portfolio</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Designs Made</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5★</div>
+        <div class="stat-label">Avg. Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right" aria-hidden="true">
+    <div class="hero-mosaic">
+      <div class="mosaic-tile">
+        <div class="tile-bg tile-1"></div>
+        <div class="tile-label">Apparel</div>
+      </div>
+      <div class="mosaic-tile">
+        <div class="tile-bg tile-2"></div>
+        <div class="tile-label">Gifts</div>
+      </div>
+      <div class="mosaic-tile">
+        <div class="tile-bg tile-3"></div>
+        <div class="tile-label">Accessories</div>
+      </div>
+    </div>
+    <div class="hero-shape" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ══════════ MARQUEE ══════════ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner" id="marquee-inner">
+    <span>Custom Apparel</span><span class="dot">✦</span>
+    <span>Personalized Gifts</span><span class="dot">✦</span>
+    <span>Bespoke Accessories</span><span class="dot">✦</span>
+    <span>Event Merchandise</span><span class="dot">✦</span>
+    <span>Brand Identity</span><span class="dot">✦</span>
+    <span>Unique Designs</span><span class="dot">✦</span>
+    <span>Custom Apparel</span><span class="dot">✦</span>
+    <span>Personalized Gifts</span><span class="dot">✦</span>
+    <span>Bespoke Accessories</span><span class="dot">✦</span>
+    <span>Event Merchandise</span><span class="dot">✦</span>
+    <span>Brand Identity</span><span class="dot">✦</span>
+    <span>Unique Designs</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about" aria-labelledby="about-title">
+  <div class="about-visual reveal">
+    <div class="main-img" style="position:relative;">
+      <!-- Decorative placeholder representing a design workspace -->
+      <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="100" cy="100" r="80" stroke="rgba(245,240,232,0.2)" stroke-width="1"/>
+        <circle cx="100" cy="100" r="55" stroke="rgba(200,152,58,0.4)" stroke-width="1.5"/>
+        <path d="M70 100 Q100 60 130 100 Q100 140 70 100Z" fill="rgba(200,152,58,0.3)" stroke="rgba(200,152,58,0.6)" stroke-width="1"/>
+        <circle cx="100" cy="100" r="12" fill="rgba(245,240,232,0.8)"/>
+        <text x="100" y="105" text-anchor="middle" fill="#1a1208" font-size="10" font-family="Georgia" font-weight="bold">KS</text>
+      </svg>
+    </div>
+    <div class="about-visual-badge">
+      <div class="badge-num">5+</div>
+      <div class="badge-text">Years<br>Creating</div>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <p class="section-label">✦ Our story</p>
+    <h2 class="section-title" id="about-title">Design Is<br>Personal.</h2>
+    <p class="section-sub">
+      KShunice Custom Designs was born from a passion for turning ideas into wearable art. Every piece is thoughtfully crafted to reflect your unique vision — no templates, no shortcuts.
+    </p>
+    <ul class="about-list" role="list">
+      <li>Custom design consultations tailored to your creative vision</li>
+      <li>Premium quality materials sourced for durability and beauty</li>
+      <li>Fast turnaround times without compromising craftsmanship</li>
+      <li>Bulk orders welcome for events, businesses & organizations</li>
+      <li>100% satisfaction guarantee on every order</li>
+    </ul>
+    <a href="#order" class="btn-primary"><span>Begin Your Custom Journey</span></a>
+  </div>
+</section>
+
+<!-- ══════════ PORTFOLIO ══════════ -->
+<section id="portfolio" aria-labelledby="portfolio-title">
+  <div class="reveal">
+    <p class="section-label">✦ Our work</p>
+    <h2 class="section-title" id="portfolio-title">The Portfolio</h2>
+    <p class="section-sub">Every design tells a story. Browse our collections and find the spark for your next custom creation.</p>
+  </div>
+
+  <div class="portfolio-filters reveal" role="group" aria-label="Filter portfolio by category">
+    <button class="filter-btn active" data-filter="all" aria-pressed="true">All Work</button>
+    <button class="filter-btn" data-filter="apparel" aria-pressed="false">Apparel</button>
+    <button class="filter-btn" data-filter="gifts" aria-pressed="false">Gifts</button>
+    <button class="filter-btn" data-filter="accessories" aria-pressed="false">Accessories</button>
+    <button class="filter-btn" data-filter="events" aria-pressed="false">Events</button>
+  </div>
+
+  <div class="portfolio-grid reveal" id="portfolio-grid" role="list">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- Quick View Modal -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="Close quick view">✕</button>
+    <div class="modal-media" id="modal-media" role="img" aria-label="Design preview"></div>
+    <div class="modal-body">
+      <h2 id="modal-title"></h2>
+      <div class="modal-tags" id="modal-tags"></div>
+      <p id="modal-desc"></p>
+      <a href="#order" class="btn-primary" id="modal-order-btn" onclick="closeModal()"><span>Order Something Similar</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ORDER FORM ══════════ -->
+<section id="order" aria-labelledby="order-title">
+  <div class="order-grid">
+    <div class="reveal">
+      <p class="section-label">✦ Let's create</p>
+      <h2 class="section-title" id="order-title">Start Your Custom Order</h2>
+      <p class="section-sub">Tell us your vision and we'll bring it to life. Fill out the form and expect a response within 24 hours.</p>
+
+      <div class="order-info-card">
+        <div class="order-step">
+          <div class="step-num">01</div>
+          <div class="step-text">
+            <h4>Submit Your Request</h4>
+            <p>Fill out the order form with details about your design, size, colors, and inspiration.</p>
+          </div>
+        </div>
+        <div class="order-step">
+          <div class="step-num">02</div>
+          <div class="step-text">
+            <h4>Design Consultation</h4>
+            <p>We'll reach out to discuss your vision, confirm details, and provide a quote within 24 hours.</p>
+          </div>
+        </div>
+        <div class="order-step">
+          <div class="step-num">03</div>
+          <div class="step-text">
+            <h4>Review & Approve</h4>
+            <p>Receive a digital mockup for your approval before production begins.</p>
+          </div>
+        </div>
+        <div class="order-step">
+          <div class="step-num">04</div>
+          <div class="step-text">
+            <h4>Receive Your Design</h4>
+            <p>Your custom piece is crafted, quality-checked, and delivered to you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="order-form">
+        <!-- Success State -->
+        <div class="success-state" id="success-state" role="alert" aria-live="polite">
+          <div class="success-icon" aria-hidden="true">✦</div>
+          <h3>Order Request Received!</h3>
+          <p>Thank you for choosing KShunice Custom Designs. We've received your request and will reach out within <strong>24 hours</strong> to discuss your vision.</p>
+          <div class="success-ref" id="success-ref" aria-label="Your order reference number"></div>
+          <p style="font-size:.85rem;color:#8a7a68;">Check your email for a confirmation. In the meantime, feel free to browse more of our work.</p>
+          <br>
+          <a href="#portfolio" class="btn-secondary" style="display:inline-block;">View More Designs</a>
+        </div>
+
+        <!-- Form -->
+        <form id="order-form" novalidate aria-label="Custom design order form">
+          <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;color:var(--ink);">Design Request Form</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="fname" name="fname" placeholder="Your first name" required autocomplete="given-name" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="lname" name="lname" placeholder="Your last name" required autocomplete="family-name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="item-type">Item Type <span aria-hidden="true">*</span></label>
+              <select id="item-type" name="item-type" required>
+                <option value="" disabled selected>Select item…</option>
+                <optgroup label="Apparel">
+                  <option value="tshirt">T-Shirt</option>
+                  <option value="hoodie">Hoodie / Sweatshirt</option>
+                  <option value="jacket">Jacket</option>
+                  <option value="hat">Hat / Cap</option>
+                </optgroup>
+                <optgroup label="Accessories">
+                  <option value="bag">Tote / Bag</option>
+                  <option value="mug">Mug / Drinkware</option>
+                  <option value="phone-case">Phone Case</option>
+                  <option value="jewelry">Jewelry</option>
+                </optgroup>
+                <optgroup label="Gifts & Decor">
+                  <option value="pillow">Pillow / Cushion</option>
+                  <option value="frame">Framed Print</option>
+                  <option value="other">Other (describe below)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="quantity">Quantity <span aria-hidden="true">*</span></label>
+              <select id="quantity" name="quantity" required>
+                <option value="" disabled selected>How many?</option>
+                <option value="1">1 piece</option>
+                <option value="2-5">2 – 5 pieces</option>
+                <option value="6-10">6 – 10 pieces</option>
+                <option value="11-25">11 – 25 pieces</option>
+                <option value="26-50">26 – 50 pieces</option>
+                <option value="50+">50+ pieces (bulk)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="size">Size(s) Needed</label>
+            <input type="text" id="size" name="size" placeholder="e.g. S, M, L, XL — or 'one size fits all'" />
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Color Palette</label>
+            <div class="color-swatches" role="group" aria-label="Select color preferences">
+              <input type="checkbox" class="swatch-input" id="c-black" name="colors" value="black">
+              <label class="swatch-label" for="c-black" title="Black" style="background:#1a1208;" aria-label="Black"></label>
+
+              <input type="checkbox" class="swatch-input" id="c-white" name="colors" value="white">
+              <label class="swatch-label" for="c-white" title="White" style="background:#f5f0e8;border:1px solid #ddd;" aria-label="White"></label>
+
+              <input type="checkbox" class="swatch-input" id="c-gold" name="colors" value="gold">
+              <label class="swatch-label" for="c-gold" title="Gold" style="background:#c8983a;" aria-label="Gold"></label>
+
+              <input type="checkbox" class="swatch-input" id="c-terra" name="colors" value="terracotta">
+              <label class="swatch-label" for="c-terra" title="Terracotta" style="background:#b85c38;" aria-label="Terracotta"></label>
+
+              <input type="checkbox" class="swatch-input" id="c-sage" name="colors" value="sage">
+              <label class="swatch-label" for="c-sage" title="Sage" style="background:#7a8c72;" aria-label="Sage"></label>
+
+              <input type="checkbox" class="swatch-input" id="c-navy" name="colors" value="navy">
+              <label class="swatch-label" for="c-navy" title="Navy" style="background:#1a2a4a;" aria-label="Navy"></label>
+
+              <input type="checkbox" class="swatch-input" id="c-blush" name="colors" value="blush">
+              <label class="swatch-label" for="c-blush" title="Blush" style="background:#e8c4b0;" aria-label="Blush"></label>
+
+              <input type="checkbox" class="swatch-input" id="c-custom" name="colors" value="custom">
+              <label class="swatch-label" for="c-custom" title="Custom / Other"
+                style="background: conic-gradient(red,orange,yellow,green,blue,violet,red);"
+                aria-label="Custom color"></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="design-desc">Design Description <span aria-hidden="true">*</span></label>
+            <textarea id="design-desc" name="design-desc" placeholder="Describe your design idea in detail — text, imagery, symbols, style, mood, or any specific requirements…" required minlength="20"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="deadline">Desired Completion Date</label>
+            <input type="date" id="deadline" name="deadline" />
+          </div>
+
+          <div class="form-group">
+            <label>Inspiration / Reference Files</label>
+            <div class="file-upload-area" id="file-drop" role="button" tabindex="0" aria-describedby="file-instructions">
+              <input type="file" id="file-upload" name="file-upload" accept="image/*,.pdf" multiple aria-describedby="file-instructions" />
+              <div class="file-upload-icon" aria-hidden="true">📎</div>
+              <div class="file-upload-text" id="file-instructions">
+                <strong>Click to upload</strong> or drag & drop<br>
+                PNG, JPG, PDF up to 10MB
+              </div>
+              <div id="file-name" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select a range…</option>
+              <option value="under-50">Under $50</option>
+              <option value="50-100">$50 – $100</option>
+              <option value="100-250">$100 – $250</option>
+              <option value="250-500">$250 – $500</option>
+              <option value="500+">$500+</option>
+              <option value="discuss">Prefer to discuss</option>
+            </select>
+          </div>
+
+          <button type="submit" class="form-submit" id="submit-btn">
+            Submit Design Request ✦
+          </button>
+          <p style="font-size:.78rem;color:#8a7a68;text-align:center;margin-top:.8rem;">
+            No payment required now — we'll confirm details and quote you first.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="reveal" style="margin-bottom:3rem;">
+    <p class="section-label">✦ Get in touch</p>
+    <h2 class="section-title" id="contact-title">Let's Connect</h2>
+    <p class="section-sub">Questions, collaborations, or just want to say hello? We'd love to hear from you.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-methods reveal" role="list">
+      <div class="contact-item" role="listitem">
+        <div class="contact-icon" aria-hidden="true">✉</div>
+        <div>
+          <h4>Email Us</h4>
+          <a href="mailto:hello@kshunice.com">hello@kshunice.com</a>
+        </div>
+      </div>
+      <div class="contact-item" role="listitem">
+        <div class="contact-icon" aria-hidden="true">📱</div>
+        <div>
+          <h4>Text / DM</h4>
+          <a href="sms:+15550001234">(555) 000-1234</a>
+        </div>
+      </div>
+      <div class="contact-item" role="listitem">
+        <div class="contact-icon" aria-hidden="true">⏰</div>
+        <div>
+          <h4>Response Time</h4>
+          <p>Within 24 hours, Mon–Sat</p>
+        </div>
+      </div>
+
+      <div style="margin-top:.5rem;">
+        <p style="font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:#8a7a68;margin-bottom:.8rem;font-weight:600;">Follow Along</p>
+        <div class="social-links" role="list">
+          <a href="#" class="social-btn" role="listitem" aria-label="Follow on Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+          <a href="#" class="social-btn" role="listitem" aria-label="Follow on TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.11 8.11 0 004.74 1.52v-3.4a4.85 4.85 0 01-.97-.12z"/></svg>
+            TikTok
+          </a>
+          <a href="#" class="social-btn" role="listitem" aria-label="Follow on Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+          <a href="#" class="social-btn" role="listitem" aria-label="View on Pinterest">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.12 9.44 7.59 11.25-.1-.95-.2-2.41.04-3.45l1.42-6.03s-.36-.73-.36-1.8c0-1.69.98-2.95 2.2-2.95 1.04 0 1.54.78 1.54 1.72 0 1.05-.67 2.62-1.01 4.07-.29 1.22.6 2.21 1.8 2.21 2.15 0 3.59-2.77 3.59-6.06 0-2.5-1.68-4.36-4.72-4.36-3.45 0-5.59 2.57-5.59 5.44 0 .99.29 1.69.74 2.23.2.24.23.33.16.6l-.27 1.08c-.09.35-.36.48-.66.35-1.84-.75-2.7-2.77-2.7-5.04 0-3.74 3.15-8.24 9.39-8.24 5.04 0 8.36 3.67 8.36 7.61 0 5.22-2.9 9.11-7.17 9.11-1.43 0-2.78-.77-3.24-1.64l-.88 3.38c-.32 1.2-1.17 2.69-1.74 3.6.88.27 1.81.42 2.77.42 6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg>
+            Pinterest
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-map reveal" aria-label="Service area map">
+      <div class="map-title">Service Area</div>
+      <div class="map-dot-grid" aria-hidden="true" id="dot-grid"></div>
+      <div class="service-areas">
+        <h4>We ship & serve:</h4>
+        <div class="area-tags" role="list">
+          <span class="area-tag" role="listitem">📍 DFW Metroplex</span>
+          <span class="area-tag" role="listitem">🌎 Nationwide Shipping</span>
+          <span class="area-tag" role="listitem">✈️ International Available</span>
+          <span class="area-tag" role="listitem">🤝 Local Pickup</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ADMIN NOTE ══════════ -->
+<div class="admin-note" role="note" aria-label="Developer / admin note">
+  <div class="admin-note-icon">🛠</div>
+  <div>
+    <strong>Admin Workflow Note (remove before launch):</strong>
+    Connect the order form to <strong>Formspree</strong> (free tier, 50 submissions/month) by setting <code>action="https://formspree.io/f/YOUR_ID"</code> on the form — emails arrive instantly to your inbox. Alternatively, integrate <strong>Google Sheets</strong> via a Google Apps Script webhook, or use <strong>Zapier</strong> to pipe submissions → Gmail → Trello/Notion for order tracking. For higher volume, consider <strong>Airtable</strong> as a lightweight CRM with a custom intake form embed.
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer role="contentinfo">
+  <div class="footer-logo">K<span>Shunice</span></div>
+  <div class="footer-tagline">Custom designs, made with love.</div>
+  <hr class="footer-divider" />
+  <div class="footer-bottom">
+    <span>© 2026 KShunice Custom Designs. All rights reserved.</span>
+    <span>Designed with ✦ intention</span>
+  </div>
+</footer>
+
+<script>
+// ─── Portfolio Data ───
+const portfolioItems = [
+  { id:1, title:"Golden Hour Tee", category:"apparel", color:"card-c1",
+    desc:"A hand-illustrated sunset graphic printed on premium cotton. Perfect for summer wardrobes.", tags:["Screen Print","Cotton","Apparel"] },
+  { id:2, title:"Blush Anniversary Set", category:"gifts", color:"card-c2",
+    desc:"A personalized gift set featuring embroidered names and custom packaging for a milestone anniversary.", tags:["Embroidery","Gift","Personalized"] },
+  { id:3, title:"Sage & Earth Tote", category:"accessories", color:"card-c3",
+    desc:"A hand-painted canvas tote featuring botanical linework in earthy tones.", tags:["Hand-Painted","Canvas","Accessories"] },
+  { id:4, title:"Midnight Hoodie", category:"apparel", color:"card-c4",
+    desc:"Bold embroidered monogram on a heavyweight fleece hoodie. Dark luxury streetwear vibes.", tags:["Embroidery","Fleece","Apparel"] },
+  { id:5, title:"Golden Gala Favors", category:"events", color:"card-c5",
+    desc:"Custom favor bags and tags designed for a 50th birthday gala — 75 units produced in 5 days.", tags:["Events","Bulk","Gifts"] },
+  { id:6, title:"Terracotta Warmth Cup", category:"accessories", color:"card-c6",
+    desc:"A custom-printed ceramic mug with hand-lettered typography and a warm earthy palette.", tags:["Ceramic","Typography","Accessories"] },
+];
+
+// ─── Render Portfolio ───
+const grid = document.getElementById('portfolio-grid');
+portfolioItems.forEach(item => {
+  const card = document.createElement('article');
+  card.className = 'portfolio-card';
+  card.setAttribute('role', 'listitem');
+  card.setAttribute('data-category', item.category);
+  card.innerHTML = `
+    <div class="card-img ${item.color}" role="img" aria-label="${item.title} design preview"></div>
+    <div class="card-overlay">
+      <div class="card-category">${item.tags[0]}</div>
+      <div class="card-title">${item.title}</div>
+      <button class="card-quick-view" aria-label="Quick view ${item.title}" data-id="${item.id}">Quick View →</button>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+// ─── Portfolio Filters ───
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('active'); b.setAttribute('aria-pressed','false');
+    });
+    btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.style.display = show ? '' : 'none';
+    });
+  });
+});
+
+// ─── Quick View Modal ───
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalMedia = document.getElementById('modal-media');
+const modalTags = document.getElementById('modal-tags');
+const modalDesc = document.getElementById('modal-desc');
+
+function openModal(id) {
+  const item = portfolioItems.find(i => i.id === id);
+  if (!item) return;
+  modalTitle.textContent = item.title;
+  modalMedia.className = `modal-media ${item.color}`;
+  modalDesc.textContent = item.desc;
+  modalTags.innerHTML = item.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.getElementById('modal-close').focus();
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('card-quick-view')) openModal(+e.target.dataset.id);
+});
+document.getElementById('modal-close').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+// ─── Order Form ───
+const form = document.getElementById('order-form');
+const successState = document.getElementById('success-state');
+const successRef = document.getElementById('success-ref');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  const ref = 'KSD-' + Date.now().toString(36).toUpperCase().slice(-6);
+  successRef.textContent = `Order Ref: ${ref}`;
+  form.style.display = 'none';
+  successState.classList.add('show');
+  successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+// ─── File Upload ───
+const fileInput = document.getElementById('file-upload');
+const fileName = document.getElementById('file-name');
+const fileDrop = document.getElementById('file-drop');
+
+fileInput.addEventListener('change', () => {
+  const files = Array.from(fileInput.files);
+  fileName.textContent = files.length ? files.map(f => f.name).join(', ') : '';
+});
+fileDrop.addEventListener('dragover', e => { e.preventDefault(); fileDrop.classList.add('dragover'); });
+fileDrop.addEventListener('dragleave', () => fileDrop.classList.remove('dragover'));
+fileDrop.addEventListener('drop', e => {
+  e.preventDefault(); fileDrop.classList.remove('dragover');
+  fileInput.files = e.dataTransfer.files;
+  fileName.textContent = Array.from(e.dataTransfer.files).map(f => f.name).join(', ');
+});
+fileDrop.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+
+// ─── Nav Hamburger ───
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+hamburger.addEventListener('click', () => {
+  const isOpen = navMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded','false');
+}));
+
+// ─── Map Dot Grid ───
+const dotGrid = document.getElementById('dot-grid');
+for (let i = 0; i < 64; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'map-dot' + (Math.random() < .15 ? ' active' : Math.random() < .3 ? ' semi' : '');
+  dotGrid.appendChild(dot);
+}
+
+// ─── Scroll Reveal ───
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// ─── Marquee duplicate ───
+const marqueeInner = document.getElementById('marquee-inner');
+marqueeInner.innerHTML += marqueeInner.innerHTML;
+</script>
+</body>
+</html>
