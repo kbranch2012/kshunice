@@ -909,133 +909,129 @@
         </div>
 
         <!-- Form -->
-        <form id="order-form" novalidate aria-label="Custom design order form">
-          <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:700;margin-bottom:1.5rem;color:var(--white);">Design Request Form</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name <span aria-hidden="true">*</span></label>
-              <input type="text" id="fname" name="fname" placeholder="First name" required autocomplete="given-name" />
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name <span aria-hidden="true">*</span></label>
-              <input type="text" id="lname" name="lname" placeholder="Last name" required autocomplete="family-name" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address <span aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="item-type">Item Type <span aria-hidden="true">*</span></label>
-              <select id="item-type" name="item-type" required>
-                <option value="" disabled selected>Select item…</option>
-                <optgroup label="Apparel">
-                  <option value="tshirt">T-Shirt</option>
-                  <option value="hoodie">Hoodie / Sweatshirt</option>
-                  <option value="jacket">Jacket</option>
-                  <option value="hat">Hat / Cap</option>
-                </optgroup>
-                <optgroup label="Accessories">
-                  <option value="bag">Tote / Bag</option>
-                  <option value="mug">Mug / Drinkware</option>
-                  <option value="phone-case">Phone Case</option>
-                  <option value="jewelry">Jewelry</option>
-                </optgroup>
-                <optgroup label="Gifts &amp; Decor">
-                  <option value="pillow">Pillow / Cushion</option>
-                  <option value="frame">Framed Print</option>
-                  <option value="other">Other (describe below)</option>
-                </optgroup>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="quantity">Quantity <span aria-hidden="true">*</span></label>
-              <select id="quantity" name="quantity" required>
-                <option value="" disabled selected>How many?</option>
-                <option value="1">1 piece</option>
-                <option value="2-5">2 – 5 pieces</option>
-                <option value="6-10">6 – 10 pieces</option>
-                <option value="11-25">11 – 25 pieces</option>
-                <option value="26-50">26 – 50 pieces</option>
-                <option value="50+">50+ pieces (bulk)</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="size">Size(s) Needed</label>
-            <input type="text" id="size" name="size" placeholder="e.g. S, M, L, XL — or 'one size fits all'" />
-          </div>
-          <div class="form-group">
-            <label>Preferred Color Palette</label>
-            <div class="color-swatches" role="group" aria-label="Select color preferences">
-              <input type="checkbox" class="swatch-input" id="c-black" name="colors" value="black">
-              <label class="swatch-label" for="c-black" title="Black" style="background:#111;border:1px solid #555;" aria-label="Black"></label>
-              <input type="checkbox" class="swatch-input" id="c-white" name="colors" value="white">
-              <label class="swatch-label" for="c-white" title="White" style="background:#ffffff;" aria-label="White"></label>
-              <input type="checkbox" class="swatch-input" id="c-grey" name="colors" value="grey">
-              <label class="swatch-label" for="c-grey" title="Grey" style="background:#888;" aria-label="Grey"></label>
-              <input type="checkbox" class="swatch-input" id="c-navy" name="colors" value="navy">
-              <label class="swatch-label" for="c-navy" title="Navy" style="background:#1a2a4a;" aria-label="Navy"></label>
-              <input type="checkbox" class="swatch-input" id="c-red" name="colors" value="red">
-              <label class="swatch-label" for="c-red" title="Red" style="background:#c0392b;" aria-label="Red"></label>
-              <input type="checkbox" class="swatch-input" id="c-green" name="colors" value="green">
-              <label class="swatch-label" for="c-green" title="Forest Green" style="background:#2d6a4f;" aria-label="Forest Green"></label>
-              <input type="checkbox" class="swatch-input" id="c-blush" name="colors" value="blush">
-              <label class="swatch-label" for="c-blush" title="Blush" style="background:#e8c4b0;" aria-label="Blush"></label>
-              <input type="checkbox" class="swatch-input" id="c-custom" name="colors" value="custom">
-              <label class="swatch-label" for="c-custom" title="Custom"
-                style="background:conic-gradient(red,orange,yellow,green,blue,violet,red);"
-                aria-label="Custom color"></label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="design-desc">Design Description <span aria-hidden="true">*</span></label>
-            <textarea id="design-desc" name="design-desc" placeholder="Describe your design idea in detail — text, imagery, symbols, style, mood, or any specific requirements…" required minlength="20"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="deadline">Desired Completion Date</label>
-            <input type="date" id="deadline" name="deadline" />
-          </div>
-          <div class="form-group">
-            <label>Inspiration / Reference Files</label>
-            <div class="file-upload-area" id="file-drop" role="button" tabindex="0" aria-describedby="file-instructions">
-              <input type="file" id="file-upload" name="file-upload" accept="image/*,.pdf" multiple aria-describedby="file-instructions" />
-              <div class="file-upload-icon" aria-hidden="true">📎</div>
-              <div class="file-upload-text" id="file-instructions">
-                <strong>Click to upload</strong> or drag &amp; drop<br>
-                PNG, JPG, PDF up to 10MB
-              </div>
-              <div id="file-name" aria-live="polite"></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="budget">Budget Range</label>
-            <select id="budget" name="budget">
-              <option value="" disabled selected>Select a range…</option>
-              <option value="under-50">Under 0</option>
-              <option value="50-100">0 – 00</option>
-              <option value="100-250">00 – 50</option>
-              <option value="250-500">50 – 00</option>
-              <option value="500+">00+</option>
-              <option value="discuss">Prefer to discuss</option>
-            </select>
-          </div>
-          <button type="submit" class="form-submit" id="submit-btn">
-            Submit Design Request ✦
-          </button>
-          <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:.8rem;">
-            No payment required now — we'll confirm details and quote you first.
-          </p>
-        </form>
-      </div>
+       <form id="order-form" action="https://formspree.io/f/mkopjoza" method="POST" novalidate aria-label="Custom design order form">
+  <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:700;margin-bottom:1.5rem;color:var(--white);">Design Request Form</h3>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="fname">First Name <span aria-hidden="true">*</span></label>
+      <input type="text" id="fname" name="fname" placeholder="First name" required autocomplete="given-name" />
+    </div>
+    <div class="form-group">
+      <label for="lname">Last Name <span aria-hidden="true">*</span></label>
+      <input type="text" id="lname" name="lname" placeholder="Last name" required autocomplete="family-name" />
     </div>
   </div>
-</section>
+  <div class="form-group">
+    <label for="email">Email Address <span aria-hidden="true">*</span></label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="item-type">Item Type <span aria-hidden="true">*</span></label>
+      <select id="item-type" name="item-type" required>
+        <option value="" disabled selected>Select item…</option>
+        <optgroup label="Apparel">
+          <option value="tshirt">T-Shirt</option>
+          <option value="hoodie">Hoodie / Sweatshirt</option>
+          <option value="jacket">Jacket</option>
+          <option value="hat">Hat / Cap</option>
+        </optgroup>
+        <optgroup label="Accessories">
+          <option value="bag">Tote / Bag</option>
+          <option value="mug">Mug / Drinkware</option>
+          <option value="phone-case">Phone Case</option>
+          <option value="jewelry">Jewelry</option>
+        </optgroup>
+        <optgroup label="Gifts &amp; Decor">
+          <option value="pillow">Pillow / Cushion</option>
+          <option value="frame">Framed Print</option>
+          <option value="other">Other (describe below)</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity <span aria-hidden="true">*</span></label>
+      <select id="quantity" name="quantity" required>
+        <option value="" disabled selected>How many?</option>
+        <option value="1">1 piece</option>
+        <option value="2-5">2 – 5 pieces</option>
+        <option value="6-10">6 – 10 pieces</option>
+        <option value="11-25">11 – 25 pieces</option>
+        <option value="26-50">26 – 50 pieces</option>
+        <option value="50+">50+ pieces (bulk)</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="size">Size(s) Needed</label>
+    <input type="text" id="size" name="size" placeholder="e.g. S, M, L, XL — or 'one size fits all'" />
+  </div>
+  <div class="form-group">
+    <label>Preferred Color Palette</label>
+    <div class="color-swatches" role="group" aria-label="Select color preferences">
+      <input type="checkbox" class="swatch-input" id="c-black" name="colors" value="black">
+      <label class="swatch-label" for="c-black" title="Black" style="background:#111;border:1px solid #555;" aria-label="Black"></label>
+      <input type="checkbox" class="swatch-input" id="c-white" name="colors" value="white">
+      <label class="swatch-label" for="c-white" title="White" style="background:#ffffff;" aria-label="White"></label>
+      <input type="checkbox" class="swatch-input" id="c-grey" name="colors" value="grey">
+      <label class="swatch-label" for="c-grey" title="Grey" style="background:#888;" aria-label="Grey"></label>
+      <input type="checkbox" class="swatch-input" id="c-navy" name="colors" value="navy">
+      <label class="swatch-label" for="c-navy" title="Navy" style="background:#1a2a4a;" aria-label="Navy"></label>
+      <input type="checkbox" class="swatch-input" id="c-red" name="colors" value="red">
+      <label class="swatch-label" for="c-red" title="Red" style="background:#c0392b;" aria-label="Red"></label>
+      <input type="checkbox" class="swatch-input" id="c-green" name="colors" value="green">
+      <label class="swatch-label" for="c-green" title="Forest Green" style="background:#2d6a4f;" aria-label="Forest Green"></label>
+      <input type="checkbox" class="swatch-input" id="c-blush" name="colors" value="blush">
+      <label class="swatch-label" for="c-blush" title="Blush" style="background:#e8c4b0;" aria-label="Blush"></label>
+      <input type="checkbox" class="swatch-input" id="c-custom" name="colors" value="custom">
+      <label class="swatch-label" for="c-custom" title="Custom"
+        style="background:conic-gradient(red,orange,yellow,green,blue,violet,red);"
+        aria-label="Custom color"></label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="design-desc">Design Description <span aria-hidden="true">*</span></label>
+    <textarea id="design-desc" name="design-desc" placeholder="Describe your design idea in detail — text, imagery, symbols, style, mood, or any specific requirements…" required minlength="20"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="deadline">Desired Completion Date</label>
+    <input type="date" id="deadline" name="deadline" />
+  </div>
+  <div class="form-group">
+    <label>Inspiration / Reference Files</label>
+    <div class="file-upload-area" id="file-drop" role="button" tabindex="0" aria-describedby="file-instructions">
+      <input type="file" id="file-upload" name="file-upload" accept="image/*,.pdf" multiple aria-describedby="file-instructions" />
+      <div class="file-upload-icon" aria-hidden="true">📎</div>
+      <div class="file-upload-text" id="file-instructions">
+        <strong>Click to upload</strong> or drag &amp; drop<br>
+        PNG, JPG, PDF up to 10MB
+      </div>
+      <div id="file-name" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="budget">Budget Range</label>
+    <select id="budget" name="budget">
+      <option value="" disabled selected>Select a range…</option>
+      <option value="under-50">Under 0</option>
+      <option value="50-100">0 – 00</option>
+      <option value="100-250">00 – 50</option>
+      <option value="250-500">50 – 00</option>
+      <option value="500+">00+</option>
+      <option value="discuss">Prefer to discuss</option>
+    </select>
+  </div>
+  <button type="submit" class="form-submit" id="submit-btn">
+    Submit Design Request ✦
+  </button>
+  <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:.8rem;">
+    No payment required now — we'll confirm details and quote you first.
+  </p>
+</form>
 
 <!-- ══════════ CONTACT ══════════ -->
 <section id="contact" aria-labelledby="contact-title">
